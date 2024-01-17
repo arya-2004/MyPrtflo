@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portf</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merriweather|Dosis"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="mystyle.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div class="container">
+        <nav>
+          <h1>MyPortfolio</h1>
+          <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <!-- <li><a href="#portfolio">Portfolio</a></li> -->
+            <li><a href="#contact">Contact</a></li>
+            <li>
+              <i class="fas fa-times" onclick="closemenu()"></i>
+            </li>
+          </ul>
+          <i class="fas fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <img src="bg.avif" />
+        <div class="header-text">
+          <p>Hey, Welcome</p>
+          <h1>I'm Disha</h1>
+          <i class="fa-solid fa-code"></i>
+          <i class="fa-brands fa-css3"></i>
+          <!-- <i class="fa-brands fa-node-js"></i> -->
+        </div>
+      </div>
+    </div>
+
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="about-col-1">
+            <img src="pic3.jpg" height="300px" width="300px" />
+            <h1>Disha</h1>
+            <p></p>
+          </div>
+          <div class="about-col-2">
+            <h1>About Me</h1>
+
+            <p>
+              I'm a second year college student enrolled in a full time computer
+              science degree who is passionate for programming . Always looking
+              for a chance to explore undiscovered avenues and learn new skills
+              that I can apply to what I do.
+            </p>
+            <div class="tab-titles">
+              <p class="tab-links active-link" onclick="opentab('skills')">
+                Skills
+              </p>
+              <p class="tab-links" onclick="opentab('education')">Education</p>
+            </div>
+            <div class="tab-content active-tab" id="skills">
+              <ul>
+                <li>
+                  <span>Frontend Languages</span><br />HTML,CSS and JavaScript
+                </li>
+                <li><span>Programming Languages</span><br />C, C++ and Java</li>
+                <li><span>DSA</span><br /></li>
+              </ul>
+            </div>
+            <div class="tab-content" id="education">
+              <ul>
+                <li><span>2022-2026</span><br />B.Tech CSE at VIT</li>
+                <li><span>2022</span><br />Passed XII in PCM with 91.2%</li>
+                <li><span>2020</span><br />Passed X with 94.6%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- PORTFOLIO -->
+    <!-- CONTACT -->
+
+    <div id="contact">
+      <div class="container">
+        <div class="row">
+          <h1>Contact Me</h1>
+          <div class="contact-left">
+            <p><i class="fas fa-paper-plane"></i>dishaarya04@gmail.com</p>
+            <div class="social-icons">
+              <i class="fab fa-facebook"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-linkedin"></i>
+              <i class="fab fa-whatsapp"></i>
+            </div>
+          </div>
+          <div class="contact-right">
+            <form name="submit-to-google-sheet">
+              &nbsp;Name
+              <input type="text" name="Name" placeholder="Enter your name" required />
+              &nbsp;Email
+              <input type="email" name="Email" placeholder="Email@gmail.com" required />
+              &nbsp;Message
+              <textarea name="Message" rows="6" placeholder="Enter the Message"></textarea>
+              <button type="submit" class="btn btn2">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="copyright">
+        <p>Copyright © Disha.</p>
+      </div>
+    </footer>
+    <script>
+      var tablinks = document.getElementsByClassName("tab-links");
+      var tabcontents = document.getElementsByClassName("tab-content");
+      function opentab(tabname) {
+        for (tablink of tablinks) {
+          tablink.classList.remove("active-link");
+        }
+        for (tabcontent of tabcontents) {
+          tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+      }
+
+      var sidemenu = document.getElementById("sidemenu");
+
+      function openmenu() {
+        sidemenu.style.right = "0";
+      }
+      function closemenu() {
+        sidemenu.style.right = "-200px";
+      }
+    </script>
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyyFw3jcOrolTcgjykWHRCtWP-w-QSIqTy_gWCE6pzZPX42m-Cby4FgLLV7xtnK2z1Q/exec";
+      const form = document.forms["submit-to-google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+  </body>
+</html>
