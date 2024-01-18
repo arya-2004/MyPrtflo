@@ -225,13 +225,14 @@ nav ul li a:hover::after{
 
 /* CONTACT */
 #contact{
-    display: flex;
+/*     display: flex; */
     flex-wrap: wrap;
 }
 #contact h1{
     font-size: 40px;
     margin: 5% 35%;
     font-family: 'Merriweather';
+    white-space: nowrap;
 }
 #contact .container{
     background-color: #eff1f2;
